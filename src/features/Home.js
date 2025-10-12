@@ -3,6 +3,7 @@ import axios from "axios";
 // import data from "../app/data";
 import Product from "./Product";
 import AddForm from "./Product/AddForm";
+import styled from "styled-components";
 
 let currentProductId = 9;
 
@@ -17,7 +18,7 @@ const reducer = (state, action) => {
   }
 };
 
-function Home() {
+function Home({ className }) {
   // const [products, setProducts] = useState([]);
   const [products, dispatch] = useReducer(reducer, []);
 
@@ -40,7 +41,8 @@ function Home() {
   }, []);
 
   return (
-    <>
+    // <>
+    <div className={className}>
       <h1>New Products</h1>
       {products.length > 0 ? (
         <ul className="Home__products">
@@ -52,8 +54,18 @@ function Home() {
         <div>Loading products....</div>
       )}
       <AddForm addProduct={addProduct} />
-    </>
+    </div>
+    //  </> 
   );
 }
 
-export default Home;
+export default styled(Home)`
+  .Home__products {
+    display: flex;
+    flex-wrap: wrap;
+
+    list-style-type: none;
+    padding: 0;
+    margin: 0 -12px;
+  }
+`;

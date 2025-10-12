@@ -1,6 +1,12 @@
 import React from "react";
+import styled from "styled-components";
 
-function Container({ children }){
-  return <main>{children}</main>;
+function Container({ className, children }) {
+  return <main className={className}>{children}</main>;
 }
-export default Container;
+
+export default styled(Container)`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 0;
+`;
